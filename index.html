@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiperin Türkiye | Orijinal Ürün Doğrulama</title>
+    <meta name="description"
+        content="Kiperin Türkiye orijinal ürün doğrulama sistemi. Ürün kodunuzu girerek ürününüzün orijinalliğini doğrulayabilirsiniz.">
+    <link rel="icon" type="image/png" href="assets/logo.webp">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '550px',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts (system fallback for Apple style) -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Confetti Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white text-gray-900 font-sans antialiased flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-gray-200">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="w-20">
+                <img src="assets/logo.webp" alt="Kiperin Türkiye Logo" class="w-full object-contain">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center xs:px-4 px-2">
+        <div class="w-full max-w-[30rem]">
+            <div class="xs:p-4 xs:bg-gray-50 xs:shadow-xl xs:rounded-2xl xs:border xs:border-gray-200 xs:p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Orijinal Ürün Doğrulama</h2>
+
+                <!-- Verification form - You can also verify using URL: http://localhost:5500/?verifycode=KCA00005 -->
+                <form id="verification-form" class="space-y-6">
+                    <div>
+                        <label for="product-code" class="block text-sm font-medium text-gray-700 mb-2">Ürün Kodunu
+                            Giriniz</label>
+                        <input type="text" id="product-code" placeholder="KCAXXXXX" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-150 uppercase"
+                            style="text-transform: uppercase;" />
+                        <p class="mt-2 text-xs text-gray-500">Kod ürün üzerinde yazılıdır.</p>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition duration-150 font-medium">
+                        Doğrulama Yap
+                    </button>
+                </form>
+
+                <!-- Loading Indicator -->
+                <div id="loading-indicator" class="hidden mt-6 flex items-center justify-center">
+                    <i class="fas fa-spinner fa-spin text-green-600 text-2xl"></i>
+                    <span class="ml-3 text-gray-700">Ürün doğrulanıyor...</span>
+                </div>
+
+                <!-- Verification Result -->
+                <div id="result" class="mt-6 hidden">
+                    <!-- Valid Result -->
+                    <div id="valid-result" class="hidden">
+                        <div class="p-2 xs:p-6 bg-green-50 border border-green-200 rounded-xl">
+                            <div class="text-center mb-6">
+                                <p class="text-xl font-bold text-green-800 original-text">
+                                    🌾 Kiperin Türkiye Orijinal Ürün ✅
+                                </p>
+                            </div>
+                            <div class="p-2 space-y-3 text-gray-700">
+                                <div class="flex items-center border-b border-green-200 pb-2">
+                                    <i class="fas fa-user text-green-500 mr-3"></i>
+                                    <p><span class="font-medium">Müşteri Adı:</span> <span id="customer-name"></span></p>
+                                </div>
+                                <div class="flex items-center border-b border-green-200 pb-2">
+                                    <i class="fas fa-calendar-alt text-green-500 mr-3"></i>
+                                    <p><span class="font-medium">Sipariş Tarihi:</span> <span id="order-date"></span></p>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-barcode text-green-500 mr-3"></i>
+                                    <p><span class="font-medium">Ürün Kodu:</span> <span id="product-code-display"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invalid Result -->
+                    <div id="invalid-result" class="hidden">
+                        <div class="p-6 bg-red-50 border border-red-200 rounded-xl">
+                            <div class="text-center">
+                                <p class="text-xl font-bold text-red-800">❌ Geçersiz Ürün Kodu</p>
+                                <p class="mt-3 text-gray-700">Girdiğiniz kod geçersiz. Lütfen tekrar kontrol edip tekrar
+                                    deneyiniz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 border-t border-gray-200">
+        <div class="container mx-auto px-4 text-center text-xs text-gray-500">
+            © 2025 Kiperin Türkiye. Tüm hakları saklıdır.
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
